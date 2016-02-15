@@ -1,7 +1,6 @@
 import math
 import random
 
-
 #normal graph, part1
 class Graph: 
     def __init__(self, n):
@@ -39,3 +38,6 @@ class unitDistanceGraph:
 	def eDistance(a, b):
     dimension = range(len(a))
     return math.sqrt(sum([(a[i] - b[i])**2 for i in dimension]))
+
+def Prim(Graph):
+	return True
