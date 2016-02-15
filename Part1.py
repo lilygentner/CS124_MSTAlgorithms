@@ -40,4 +40,5 @@ class unitDistanceGraph:
     return math.sqrt(sum([(a[i] - b[i])**2 for i in dimension]))
 
 def Prim(Graph):
+    v = Graph.vectors
 	return True
