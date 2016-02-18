@@ -4,7 +4,7 @@ import random
 #normal graph, part1
 class Graph: 
     def __init__(self, n):
-        self.vectors = [range(n)]
+        self.vertices = [range(n)]
         self.matrix = generateGraphMatrix(n)
 
     def generateGraphMatrix(n):
@@ -25,8 +25,8 @@ class Graph:
 #unit distance graph
 class unitDistanceGraph:
 	def __init__(self, n, dimension):
-		self.vectors = [range(n)]
-		self.vectorLocationDict = generateUnitDistances(n, dimension)
+		self.vertices = [range(n)]
+		self.vertexLocationDict = generateUnitDistances(n, dimension)
 
 	def generateUnitDistances(n, dimension): 
 		vectorDict = {i: tuple(random.random() for _ in range(dimension)) for i in range(n)}
@@ -39,6 +39,24 @@ class unitDistanceGraph:
     dimension = range(len(a))
     return math.sqrt(sum([(a[i] - b[i])**2 for i in dimension]))
 
-def Prim(Graph):
-    v = Graph.vectors
-	return True
+
+class heap:
+    def __init__(self, lst):
+        self.array = lst
+
+    def parent(self, i):
+        return i/2
+
+    def left_child(self, i):
+        return 2*i
+
+    def right_child(self, i):
+        return (2*i) + 1
+
+class minPriorityQueue(heap):
+    def __init__(self, items = []):
+        self.set = 
+        self.heap = 
+
+
+
