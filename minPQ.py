@@ -69,13 +69,26 @@ class minPQ:
 		return items
 
 	def minHeapify(self, index):
+		if len(self.Heap) < 2:
+			return self.Heap
+
 		p_index = index
 		l_index = self.find_lchild(index)
 		r_index = self.find_rchild(index)
 
-		p_value = self.Heap[p_index]
-		l_value = self.Heap[l_index]
-		r_value = self.Heap[r_index]
+		try:
+			p_value = self.Heap[p_index]
+		except:
+			return self.Heap
+		try:
+			l_value = self.Heap[l_index]
+		except:
+			return self.Heap
+
+		try:
+			r_value = self.Heap[r_index]
+		except:
+			r_value = (-1, 9999)
 
 		min_value = min([p_value[1], l_value[1], r_value[1]])
 
@@ -93,6 +106,11 @@ class minPQ:
 			return self.Heap
 
 	def insert(self, item):
+		keys = [i[0] for i in self.Heap]
+		if item[0] in keys:
+			self.Heap.pop(keys.index(item[0]))
+			self.minHeapify(keys.index(item[0]))
+
 		item_index = len(self.Heap)
 		parent_index = self.find_parent(item_index)
 		try:
@@ -100,10 +118,10 @@ class minPQ:
 		except:
 			self.Heap.append(item)
 			return self.Heap
-			
+
 		self.Heap.append(item)
 
-		while parent_value[1] > item[1]:
+		while (parent_value[1] > item[1]) and (parent_index >= 0):
 			self.Heap[parent_index] = item
 			self.Heap[item_index] = parent_value
 
@@ -111,7 +129,7 @@ class minPQ:
 			parent_index = self.find_parent(parent_index)
 
 			parent_value = self.Heap[parent_index]
-			item_value = self.Heap[item_index]
+			item = self.Heap[item_index]
 
 		return self.Heap
 
