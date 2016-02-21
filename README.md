@@ -1,1 +1,1 @@
-# CS124_MSTAlgorithms
+## MST Algorithm
