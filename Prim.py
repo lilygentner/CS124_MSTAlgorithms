@@ -33,16 +33,8 @@ def prim(G):
 				H.insert((w, dist[w]))
 	return S
 
-G = Graph.nGraph(10)	
+
+def tree_len (result):
+	return sum([r[1] for r in result])
 
 
-result = prim(G)
-tree_length = sum([r[1] for r in result])
-print tree_length
-
-tls = []
-for _ in range(10000):
-	result = prim(Graph.nGraph(15))
-	tls.append(sum([r[1] for r in result]))
-
-print np.mean(tls)
